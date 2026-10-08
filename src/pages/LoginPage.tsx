@@ -1,7 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query'
 import { useState, type FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { sendMagicLink } from '../api/auth'
+import { signInAnonymously } from '../api/auth'
 import { upsertNickname } from '../api/couples'
 import { Button } from '../components/Button'
 import { Screen } from '../components/AppShell'
@@ -9,20 +9,17 @@ import { useAuth } from '../features/session/AuthProvider'
 import { DEV_USER_ID, isSupabaseConfigured } from '../api/client'
 
 export function LoginPage() {
-  const [email, setEmail] = useState('')
-  const [sent, setSent] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [pending, setPending] = useState(false)
 
-  async function onSubmit(event: FormEvent) {
-    event.preventDefault()
+  async function startSupabase() {
     setError(null)
     setPending(true)
     try {
-      await sendMagicLink(email.trim(), `${window.location.origin}/`)
-      setSent(true)
+      await signInAnonymously()
+      window.location.assign('/')
     } catch (err) {
-      setError(err instanceof Error ? err.message : '送信できませんでした')
+      setError(err instanceof Error ? err.message : '開始できませんでした')
     } finally {
       setPending(false)
     }
@@ -65,28 +62,20 @@ export function LoginPage() {
             2人で試すときは、別タブで開いてから2人目を選んでください。
           </p>
         </div>
-      ) : sent ? (
-        <p className="mt-10 rounded-2xl bg-card p-4 text-sm leading-relaxed">
-          メールを送りました。届いたリンクを開いて、そのまま使いはじめてください。
-        </p>
       ) : (
-        <form className="mt-10 space-y-4" onSubmit={onSubmit}>
-          <label className="block text-sm text-muted">
-            メールアドレス
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="mt-2 min-h-12 w-full rounded-2xl border border-line bg-card px-4 text-ink outline-none focus:border-sage"
-              autoComplete="email"
-            />
-          </label>
-          {error ? <p className="text-sm text-peach">{error}</p> : null}
-          <Button type="submit" disabled={pending}>
-            {pending ? '送信中…' : 'ログイン用のリンクを送る'}
+        <div className="mt-8 space-y-3">
+          <Button
+            type="button"
+            disabled={pending}
+            onClick={() => void startSupabase()}
+          >
+            {pending ? '準備中…' : '招待コードで始める'}
           </Button>
-        </form>
+          {error ? <p className="text-sm text-peach">{error}</p> : null}
+          <p className="text-xs leading-relaxed text-muted">
+            メールアドレスは不要です。次の画面で招待コードを入力するか、コードを作成できます。
+          </p>
+        </div>
       )}
     </Screen>
   )

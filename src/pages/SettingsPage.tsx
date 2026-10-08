@@ -99,9 +99,15 @@ export function SettingsPage() {
       {error ? <p className="mt-4 text-sm text-peach">{error}</p> : null}
 
       <div className="mt-6 space-y-3">
-        <Button type="button" variant="secondary" onClick={() => void onSignOut()}>
-          ログアウト
-        </Button>
+        {user?.is_anonymous ? (
+          <p className="text-xs leading-relaxed text-muted">
+            現在はメールなしの試用アカウントです。ログアウトやブラウザーのデータ消去をすると、このアカウントに戻れません。
+          </p>
+        ) : (
+          <Button type="button" variant="secondary" onClick={() => void onSignOut()}>
+            ログアウト
+          </Button>
+        )}
         <Button type="button" variant="danger" disabled={pending} onClick={() => void onLeave()}>
           ペアを解除する
         </Button>

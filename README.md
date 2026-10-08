@@ -13,13 +13,9 @@ npm install
 ### 2. Supabase（リージョン: Tokyo / ap-northeast-1）
 
 1. [Supabase](https://supabase.com) でプロジェクトを作成する
-2. Authentication → Providers で Email を有効化し、マジックリンク（パスワードなし）を使う
-3. Authentication → URL Configuration にリダイレクト先を追加する
-   - `http://localhost:5173`
-   - `http://localhost:5173/`
-   - 本番の Vercel URL（例: `https://xxxxx.vercel.app`）
-4. SQL Editor で `supabase/migrations/20261003000000_init.sql` を実行する
-5. Database → Replication で `current_signals` / `reactions` / `couple_members` が Realtime publication に入っていることを確認する
+2. Authentication → Sign In / Providers で Anonymous Sign-Ins を有効化する
+3. SQL Editor で `supabase/migrations/20261003000000_init.sql` を実行する
+4. Database → Replication で `current_signals` / `reactions` / `couple_members` が Realtime publication に入っていることを確認する
 
 ### 3. 環境変数
 
@@ -31,6 +27,8 @@ VITE_SUPABASE_ANON_KEY=eyJ...
 ```
 
 値は Project Settings → API の Project URL と anon public key。
+
+メール認証は使わず、Supabaseの匿名ユーザーでセッションを作ります。ブラウザーのデータを消去するとアカウントに戻れないため、試用中はログアウト・サイトデータ消去をしないでください。
 
 ### 4. 起動
 
