@@ -142,65 +142,95 @@ export function HomePage() {
 
   return (
     <div className="flex min-h-[calc(100dvh-5rem)] flex-col px-5 pb-6 pt-5">
-      <header className="mb-4">
-        <p className="text-sm text-sage">Kimoti</p>
-        <h1 className="text-lg font-medium">
-          {partnerProfile.data?.nickname
-            ? `${partnerProfile.data.nickname}さんのいま`
-            : '相手のいま'}
-        </h1>
+      <header className="flex items-center justify-between">
+        <div>
+          <p className="text-xs font-bold tracking-[0.16em] text-sage-deep">KIMOTI</p>
+          <p className="mt-0.5 text-xs text-muted">ふたりの会話の合図</p>
+        </div>
+        <span className="rounded-full border border-line bg-card px-3 py-1 text-xs text-muted">
+          ふたりだけ
+        </span>
       </header>
 
-      <SignalView
-        signal={partnerMember?.sharing_paused ? null : (partnerSignal.data ?? null)}
-        now={now}
-        sharingPaused={partnerMember?.sharing_paused}
-        emptyLabel="まだ合図はありません"
-      />
+      <section className="mb-6 mt-7">
+        <p className="text-xs font-medium text-sage-deep">話すタイミングを、一緒に。</p>
+        <h1 className="mt-2 text-[1.65rem] font-medium leading-snug">
+          気持ちを知って、<br />
+          話せる頃を待ち合わせ。
+        </h1>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
+          合図は会話の代わりではなく、ちゃんと話すためのきっかけです。
+        </p>
+      </section>
+
+      <section aria-labelledby="partner-signal-heading">
+        <div className="mb-3 flex items-center gap-2">
+          <span className="size-2 rounded-full bg-peach" aria-hidden="true" />
+          <h2 id="partner-signal-heading" className="text-sm font-medium">
+          {partnerProfile.data?.nickname
+              ? `${partnerProfile.data.nickname}さんから届いた合図`
+              : 'パートナーから届いた合図'}
+          </h2>
+        </div>
+
+        <SignalView
+          signal={partnerMember?.sharing_paused ? null : (partnerSignal.data ?? null)}
+          now={now}
+          sharingPaused={partnerMember?.sharing_paused}
+          emptyLabel="合図が届くと、ここに表示されます"
+        />
+      </section>
 
       {mismatchCopy ? (
-        <p className="mt-4 rounded-2xl bg-card px-4 py-3 text-sm leading-relaxed text-muted">
+        <p className="mt-4 rounded-2xl border border-peach/30 bg-[#fbefeb] px-4 py-3 text-sm leading-relaxed text-ink">
           {mismatchCopy}
         </p>
       ) : null}
 
       {received ? (
-        <p className="mt-3 text-sm text-sage-deep">
-          {partnerProfile.data?.nickname ?? 'パートナー'}さんから「
-          {REACTION_LABELS[received.kind]}」
+        <p className="mt-3 rounded-xl bg-[#e5f0e9] px-3 py-2 text-sm text-sage-deep" role="status">
+          {partnerProfile.data?.nickname ?? 'パートナー'}さんに「
+          {REACTION_LABELS[received.kind]}」を受け取りました
         </p>
       ) : null}
 
       {canReact ? (
-        <div className="mt-5 grid grid-cols-3 gap-2">
-          {REACTION_KINDS.map((kind) => (
-            <button
-              key={kind}
-              type="button"
-              onClick={() => reactMut.mutate(kind)}
-              className={`min-h-11 rounded-2xl px-2 text-xs ${
-                sent?.kind === kind
-                  ? 'bg-sage text-white'
-                  : 'bg-card text-ink border border-line'
-              }`}
-            >
-              {REACTION_LABELS[kind]}
-            </button>
-          ))}
-        </div>
+        <section className="mt-5" aria-label="パートナーへのリアクション">
+          <p className="mb-2 text-xs text-muted">受け取ったことを伝える</p>
+          <div className="grid grid-cols-3 gap-2">
+            {REACTION_KINDS.map((kind) => (
+              <button
+                key={kind}
+                type="button"
+                onClick={() => reactMut.mutate(kind)}
+                aria-pressed={sent?.kind === kind}
+                className={`min-h-11 rounded-xl border px-2 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage ${
+                  sent?.kind === kind
+                    ? 'border-sage bg-sage text-white'
+                    : 'border-line bg-card text-ink hover:border-sage/60'
+                }`}
+              >
+                {REACTION_LABELS[kind]}
+              </button>
+            ))}
+          </div>
+        </section>
       ) : null}
 
-      <section className="mt-8">
-        <h2 className="mb-2 text-sm text-muted">自分のいま</h2>
+      <section className="mt-7" aria-labelledby="my-signal-heading">
+        <div className="mb-3 flex items-center gap-2">
+          <span className="size-2 rounded-full bg-sage" aria-hidden="true" />
+          <h2 id="my-signal-heading" className="text-sm font-medium">あなたからの合図</h2>
+        </div>
         <SignalView signal={mySignal.data ?? null} now={now} size="small" />
       </section>
 
       <div className="mt-auto pt-6">
         <Link
           to="/signal"
-          className="flex min-h-14 w-full items-center justify-center rounded-3xl bg-sage text-base font-medium text-white shadow-sm"
+          className="flex min-h-14 w-full items-center justify-center rounded-2xl bg-sage-deep px-5 text-base font-medium text-white shadow-[0_8px_18px_rgba(40,88,78,0.18)] transition-colors hover:bg-sage focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
         >
-          合図を変更する
+          {mySignal.data ? '自分の合図を更新する' : '自分の気持ちを伝える'}
         </Link>
       </div>
 

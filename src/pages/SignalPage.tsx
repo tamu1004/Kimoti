@@ -96,9 +96,10 @@ export function SignalPage() {
       >
         戻る
       </button>
-      <h1 className="mt-3 text-2xl font-medium">いまの気持ちを選ぶ</h1>
-      <p className="mt-2 text-sm text-muted">
-        選んで送るだけです。要望や期限はあとから足せます。
+      <p className="mt-5 text-xs font-medium text-sage-deep">ふたりのタイミングを合わせる</p>
+      <h1 className="mt-2 text-2xl font-medium">いまの気持ちを伝える</h1>
+      <p className="mt-3 text-sm leading-relaxed text-muted">
+        話したくない気持ちも、あとで話したい気持ちも大切な合図です。いまの気持ちと、また話せそうな頃を伝えましょう。
       </p>
 
       <div className="mt-5 grid grid-cols-1 gap-2">
@@ -109,10 +110,11 @@ export function SignalPage() {
               key={item.id}
               type="button"
               onClick={() => selectPreset(item.id)}
-              className={`flex min-h-14 items-center gap-3 rounded-2xl px-4 text-left ${
+              aria-pressed={active}
+              className={`flex min-h-14 items-center gap-3 rounded-2xl border px-4 text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage ${
                 active
-                  ? 'bg-sage text-white shadow-sm'
-                  : 'bg-card text-ink border border-line'
+                  ? 'border-sage bg-[#e2efe8] text-sage-deep shadow-sm'
+                  : 'border-line bg-card text-ink hover:border-sage/50'
               }`}
             >
               <span className="text-xl" aria-hidden>
@@ -169,7 +171,9 @@ export function SignalPage() {
             requireDeadline={preset.revisitRequired}
           />
 
-          <p className="text-sm text-muted">{formatRevisitMessage(revisitAt)}</p>
+          <p className="rounded-xl border-l-2 border-sage bg-[#eaf3ee] px-4 py-3 text-sm leading-relaxed text-sage-deep">
+            {formatRevisitMessage(revisitAt)}
+          </p>
 
           {shouldShowExtendTalkNudge(mySignal.data?.extend_count ?? 0) &&
           mySignal.data?.preset === presetId ? (
@@ -183,7 +187,7 @@ export function SignalPage() {
             disabled={!canSend || mutation.isPending}
             onClick={() => mutation.mutate()}
           >
-            {mutation.isPending ? '送っています…' : 'この合図を送る'}
+            {mutation.isPending ? '伝えています…' : 'この合図を伝える'}
           </Button>
         </div>
       ) : null}
