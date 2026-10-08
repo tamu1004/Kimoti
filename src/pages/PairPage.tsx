@@ -19,6 +19,7 @@ export function PairPage() {
   const navigate = useNavigate()
   const [code, setCode] = useState('')
   const [invite, setInvite] = useState<string | null>(null)
+  const [copyFeedback, setCopyFeedback] = useState<'copied' | 'failed' | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [pending, setPending] = useState(false)
   const membership = useMembership()
@@ -75,7 +76,12 @@ export function PairPage() {
 
   async function copyLink() {
     if (!joinUrl) return
-    await navigator.clipboard.writeText(joinUrl)
+    try {
+      await navigator.clipboard.writeText(joinUrl)
+      setCopyFeedback('copied')
+    } catch {
+      setCopyFeedback('failed')
+    }
   }
 
   return (
@@ -92,8 +98,15 @@ export function PairPage() {
             <p className="text-center text-3xl tracking-[0.3em]">{invite}</p>
             <p className="break-all text-xs text-muted">{joinUrl}</p>
             <Button type="button" variant="secondary" onClick={() => void copyLink()}>
-              リンクをコピー
+              {copyFeedback === 'copied' ? 'もう一度コピー' : 'リンクをコピー'}
             </Button>
+            {copyFeedback ? (
+              <p className="text-sm text-sage-deep" role="status" aria-live="polite">
+                {copyFeedback === 'copied'
+                  ? 'リンクをコピーしました。LINEに貼り付けて送れます。'
+                  : 'コピーできませんでした。表示中のリンクを長押ししてコピーしてください。'}
+              </p>
+            ) : null}
           </div>
         ) : (
           <Button className="mt-4" type="button" disabled={pending} onClick={() => void makeInvite()}>
