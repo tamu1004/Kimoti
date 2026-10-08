@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", ui-rounded,
+    system-ui, sans-serif;
+  --color-paper: #f3eee6;
+  --color-ink: #2d2926;
+  --color-muted: #6f6861;
+  --color-sage: #5c8168;
+  --color-sage-deep: #3e5c49;
+  --color-card: #fffcf7;
+  --color-line: #e4dbd0;
+  --color-peach: #c98468;
+  --color-fog: #9a938b;
+}
+
+html,
+body,
+#root {
+  min-height: 100dvh;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
