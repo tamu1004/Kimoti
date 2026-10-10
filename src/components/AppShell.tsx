@@ -3,7 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom'
 
 const item = ({ isActive }: { isActive: boolean }) =>
   `flex flex-1 flex-col items-center gap-0.5 py-2 text-[11px] ${
-    isActive ? 'text-sage-deep font-medium' : 'text-muted'
+    isActive ? 'text-aurora-teal font-medium' : 'text-muted'
   }`
 
 export function AppShell() {
@@ -12,7 +12,7 @@ export function AppShell() {
       <div className="flex-1 pb-20">
         <Outlet />
       </div>
-      <nav className="fixed bottom-0 left-1/2 z-30 flex w-full max-w-[430px] -translate-x-1/2 border-t border-line bg-card/95 backdrop-blur">
+      <nav className="glass-panel fixed bottom-0 left-1/2 z-30 flex w-full max-w-[430px] -translate-x-1/2 border-t border-line bg-[#0c121f]/90 backdrop-blur-2xl">
         <NavLink to="/" end className={item}>
           ホーム
         </NavLink>

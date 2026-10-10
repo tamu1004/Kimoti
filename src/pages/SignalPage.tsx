@@ -96,7 +96,7 @@ export function SignalPage() {
       >
         戻る
       </button>
-      <p className="mt-5 text-xs font-medium text-sage-deep">ふたりのタイミングを合わせる</p>
+      <p className="mt-5 text-xs font-medium text-aurora-teal">ふたりのタイミングを合わせる</p>
       <h1 className="mt-2 text-2xl font-medium">いまの気持ちを伝える</h1>
       <p className="mt-3 text-sm leading-relaxed text-muted">
         話したくない気持ちも、聞いてほしい気持ちも大切な合図です。いまの気持ちを選んで伝えましょう。
@@ -113,7 +113,7 @@ export function SignalPage() {
               aria-pressed={active}
               className={`flex min-h-14 items-center gap-3 rounded-2xl border px-4 text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage ${
                 active
-                  ? 'border-sage bg-lilac text-sage-deep shadow-sm'
+                  ? 'border-aurora-indigo/50 bg-lilac text-aurora-cyan shadow-[0_0_20px_rgba(129,140,248,0.14)]'
                   : 'border-line bg-card text-ink hover:border-sage/50'
               }`}
             >
@@ -164,7 +164,7 @@ export function SignalPage() {
           </label>
 
           {preset.tone === 'positive' ? (
-            <p className="rounded-xl bg-sunlight px-4 py-3 text-sm leading-relaxed text-sage-deep">
+            <p className="rounded-xl border border-amber-300/15 bg-sunlight px-4 py-3 text-sm leading-relaxed text-amber-100">
               うれしい気持ちは、話す時間を決めずにそのまま伝えられます。
             </p>
           ) : (
@@ -177,7 +177,7 @@ export function SignalPage() {
                 requireDeadline={preset.revisitRequired}
               />
 
-              <p className="rounded-xl border-l-2 border-sage bg-moon px-4 py-3 text-sm leading-relaxed text-sage-deep">
+              <p className="rounded-xl border-l-2 border-aurora-cyan bg-moon px-4 py-3 text-sm leading-relaxed text-sky-100">
                 {formatRevisitMessage(revisitAt)}
               </p>
             </>

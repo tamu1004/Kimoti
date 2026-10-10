@@ -45,7 +45,7 @@ export function RevisitPicker({
               onClick={() => onSelect(id)}
               className={`min-h-11 rounded-2xl px-3 text-left text-sm ${
                 active
-                  ? 'bg-sage text-white'
+                  ? 'border border-aurora-teal/60 bg-aurora-teal text-aurora-deep shadow-[0_0_18px_rgba(45,212,191,0.16)]'
                   : 'bg-paper text-ink border border-line'
               }`}
             >

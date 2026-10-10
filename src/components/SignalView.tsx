@@ -28,7 +28,7 @@ export function SignalView({
 }) {
   if (sharingPaused) {
     return (
-      <div className="rounded-3xl bg-card px-5 py-8 text-center shadow-sm">
+      <div className="glass-panel rounded-3xl px-5 py-8 text-center">
         <p className="text-lg text-muted">共有を一時停止中</p>
       </div>
     )
@@ -39,7 +39,7 @@ export function SignalView({
   if (!signal || status === 'unknown') {
     return (
       <div
-        className="rounded-[1.4rem] border border-line bg-card px-5 py-6"
+        className="glass-panel rounded-[1.4rem] px-5 py-6"
         style={{ opacity: 0.7 }}
       >
         <p className="text-xs font-medium text-muted">いまの合図</p>
@@ -67,19 +67,19 @@ export function SignalView({
   const large = size === 'large'
   const toneColor =
     preset.tone === 'positive'
-      ? 'bg-sunlight'
+      ? 'bg-amber-400/10 border-amber-300/20'
       : preset.tone === 'negative'
-        ? 'bg-blush'
-        : 'bg-moon'
+        ? 'bg-aurora-indigo/10 border-aurora-indigo/25'
+        : 'bg-aurora-cyan/10 border-aurora-cyan/20'
 
   return (
     <div
-      className={`rounded-[1.4rem] border border-line bg-card ${large ? 'p-5' : 'p-4'}`}
+      className={`glass-panel rounded-[1.4rem] ${large ? 'p-5' : 'p-4'}`}
       style={{ opacity: freshnessOpacity(status) }}
     >
       <div className="flex items-start gap-4">
         <span
-          className={`flex shrink-0 items-center justify-center rounded-full ${toneColor} ${large ? 'size-16 text-4xl' : 'size-11 text-2xl'}`}
+          className={`flex shrink-0 items-center justify-center rounded-2xl border ${toneColor} ${large ? 'size-16 text-4xl' : 'size-11 text-2xl'}`}
           aria-hidden
         >
           {preset.emoji}

@@ -80,7 +80,7 @@ export function SettingsPage() {
       <h1 className="text-2xl font-medium">設定</h1>
       <p className="mt-2 text-sm text-muted">{profile.data?.nickname}</p>
 
-      <section className="mt-6 rounded-3xl bg-card p-5 shadow-sm">
+      <section className="glass-panel mt-6 rounded-3xl p-5">
         <h2 className="font-medium">共有の一時停止</h2>
         <p className="mt-2 text-sm leading-relaxed text-muted">
           オンにすると、相手には「共有を一時停止中」とだけ見えます。

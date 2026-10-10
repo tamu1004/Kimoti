@@ -91,7 +91,7 @@ export function PairPage() {
         招待コードは24時間有効で、1回だけ使えます。
       </p>
 
-      <section className="mt-8 rounded-3xl bg-card p-5 shadow-sm">
+      <section className="glass-panel mt-8 rounded-3xl p-5">
         <h2 className="font-medium">招待コードを作る</h2>
         {invite ? (
           <div className="mt-4 space-y-3">
@@ -101,7 +101,7 @@ export function PairPage() {
               {copyFeedback === 'copied' ? 'もう一度コピー' : 'リンクをコピー'}
             </Button>
             {copyFeedback ? (
-              <p className="text-sm text-sage-deep" role="status" aria-live="polite">
+              <p className="text-sm text-aurora-teal" role="status" aria-live="polite">
                 {copyFeedback === 'copied'
                   ? 'リンクをコピーしました。LINEに貼り付けて送れます。'
                   : 'コピーできませんでした。表示中のリンクを長押ししてコピーしてください。'}
@@ -115,7 +115,7 @@ export function PairPage() {
         )}
       </section>
 
-      <section className="mt-5 rounded-3xl bg-card p-5 shadow-sm">
+      <section className="glass-panel mt-5 rounded-3xl p-5">
         <h2 className="font-medium">招待コードを入力する</h2>
         <form className="mt-4 space-y-3" onSubmit={(e) => void join(e)}>
           <input
@@ -123,7 +123,7 @@ export function PairPage() {
             onChange={(e) => setCode(normalizeInviteCode(e.target.value))}
             minLength={6}
             maxLength={8}
-            className="min-h-12 w-full rounded-2xl border border-line bg-paper px-4 tracking-[0.2em] outline-none focus:border-sage"
+            className="min-h-12 w-full rounded-2xl border border-line bg-[#080d17]/80 px-4 tracking-[0.2em] outline-none focus:border-aurora-cyan"
             placeholder="ABC12XYZ"
           />
           {error ? <p className="text-sm text-peach">{error}</p> : null}

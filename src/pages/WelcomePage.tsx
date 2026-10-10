@@ -20,12 +20,12 @@ export function WelcomePage() {
   return (
     <Screen className="flex min-h-dvh flex-col justify-center pb-10">
       <header>
-        <p className="text-xs font-bold tracking-[0.16em] text-sage-deep">KIMOTI</p>
+        <p className="bg-gradient-to-r from-aurora-teal via-aurora-indigo to-aurora-rose bg-clip-text text-xs font-bold tracking-[0.16em] text-transparent">KIMOTI</p>
         <p className="mt-1 text-xs text-muted">ふたりの会話の合図</p>
       </header>
 
       <main className="mt-9">
-        <p className="text-sm font-medium text-sage-deep">話すタイミングを、一緒に。</p>
+        <p className="text-sm font-medium text-aurora-teal">話すタイミングを、一緒に。</p>
         <h1 className="mt-2 text-[1.8rem] font-medium leading-snug">
           気持ちを知って、<br />
           話せる頃を待ち合わせ。

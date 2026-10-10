@@ -31,7 +31,7 @@ export function HistoryPage() {
             </div>
           ))
         ) : (
-          <p className="rounded-2xl bg-card p-5 text-sm text-muted">
+          <p className="glass-panel rounded-2xl p-5 text-sm text-muted">
             まだ記録はありません。
           </p>
         )}

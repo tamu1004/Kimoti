@@ -144,7 +144,7 @@ export function HomePage() {
     <div className="flex min-h-[calc(100dvh-5rem)] flex-col px-5 pb-6 pt-5">
       <header className="flex items-center justify-between">
         <div>
-          <p className="text-xs font-bold tracking-[0.16em] text-sage-deep">KIMOTI</p>
+          <p className="bg-gradient-to-r from-aurora-teal via-aurora-indigo to-aurora-rose bg-clip-text text-xs font-bold tracking-[0.16em] text-transparent">KIMOTI</p>
           <p className="mt-0.5 text-xs text-muted">ふたりの会話の合図</p>
         </div>
         <span className="rounded-full border border-line bg-card px-3 py-1 text-xs text-muted">
@@ -153,7 +153,7 @@ export function HomePage() {
       </header>
 
       <section className="mb-6 mt-7">
-        <p className="text-xs font-medium text-sage-deep">話すタイミングを、一緒に。</p>
+        <p className="text-xs font-medium text-aurora-teal">話すタイミングを、一緒に。</p>
         <h1 className="mt-2 text-[1.65rem] font-medium leading-snug">
           気持ちを知って、<br />
           話せる頃を待ち合わせ。
@@ -181,14 +181,14 @@ export function HomePage() {
         />
       </section>
 
-      {mismatchCopy ? (
-        <p className="mt-4 rounded-2xl border border-peach/30 bg-blush px-4 py-3 text-sm leading-relaxed text-ink">
+          {mismatchCopy ? (
+        <p className="glass-panel mt-4 rounded-2xl border-peach/30 bg-blush/70 px-4 py-3 text-sm leading-relaxed text-ink">
           {mismatchCopy}
         </p>
       ) : null}
 
       {received ? (
-        <p className="mt-3 rounded-xl bg-mint px-3 py-2 text-sm text-sage-deep" role="status">
+        <p className="glass-panel mt-3 rounded-xl border-aurora-teal/25 bg-mint/70 px-3 py-2 text-sm text-aurora-teal" role="status">
           {partnerProfile.data?.nickname ?? 'パートナー'}さんに「
           {REACTION_LABELS[received.kind]}」を受け取りました
         </p>
@@ -206,8 +206,8 @@ export function HomePage() {
                 aria-pressed={sent?.kind === kind}
                 className={`min-h-11 rounded-xl border px-2 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage ${
                   sent?.kind === kind
-                    ? 'border-sage bg-sage text-white'
-                    : 'border-line bg-card text-ink hover:border-sage/60'
+                    ? 'border-aurora-teal/50 bg-aurora-teal/15 text-aurora-teal shadow-[0_0_20px_rgba(45,212,191,0.12)]'
+                    : 'glass-panel border-line text-ink hover:border-aurora-cyan/50'
                 }`}
               >
                 {REACTION_LABELS[kind]}
@@ -228,7 +228,7 @@ export function HomePage() {
       <div className="mt-auto pt-6">
         <Link
           to="/signal"
-          className="flex min-h-14 w-full items-center justify-center rounded-2xl bg-sage-deep px-5 text-base font-medium text-white shadow-[0_8px_20px_rgba(64,91,115,0.2)] transition-colors hover:bg-sage focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
+          className="flex min-h-14 w-full items-center justify-center rounded-2xl bg-gradient-to-r from-aurora-teal via-aurora-indigo to-aurora-rose px-5 text-base font-medium text-aurora-deep shadow-[0_8px_28px_rgba(129,140,248,0.22)] transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-aurora-cyan"
         >
           {mySignal.data ? '自分の合図を更新する' : '自分の気持ちを伝える'}
         </Link>

@@ -3,20 +3,26 @@
 @theme {
   --font-sans: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", ui-rounded,
     system-ui, sans-serif;
-  --color-paper: #f3f5f6;
-  --color-ink: #303843;
-  --color-muted: #68737c;
-  --color-sage: #617f9a;
-  --color-sage-deep: #405b73;
-  --color-card: #fffefe;
-  --color-line: #dfe5e8;
-  --color-peach: #bd756f;
-  --color-fog: #929aa1;
-  --color-moon: #eaf1f8;
-  --color-lilac: #efedf4;
-  --color-mint: #e5f1eb;
-  --color-blush: #f8ece9;
-  --color-sunlight: #faf1df;
+  --color-paper: #080b13;
+  --color-ink: #f1f5f9;
+  --color-muted: #a0adbf;
+  --color-sage: #2dd4bf;
+  --color-sage-deep: #174e58;
+  --color-card: #111827;
+  --color-line: rgb(255 255 255 / 12%);
+  --color-peach: #f59aa4;
+  --color-fog: #8290a3;
+  --color-moon: #142437;
+  --color-lilac: #211d36;
+  --color-mint: #122c2b;
+  --color-blush: #301d2b;
+  --color-sunlight: #302819;
+  --color-aurora-teal: #2dd4bf;
+  --color-aurora-cyan: #38bdf8;
+  --color-aurora-indigo: #818cf8;
+  --color-aurora-violet: #c084fc;
+  --color-aurora-rose: #f472b6;
+  --color-aurora-deep: #07111a;
 }
 
 html,
@@ -29,25 +35,46 @@ body {
   margin: 0;
   background-color: var(--color-paper);
   background-image:
-    linear-gradient(132deg, rgb(211 224 242 / 58%), transparent 48%),
-    linear-gradient(310deg, rgb(203 232 220 / 54%), transparent 50%),
-    linear-gradient(28deg, rgb(248 220 211 / 34%), transparent 58%);
+    linear-gradient(116deg, transparent 12%, rgb(45 212 191 / 18%) 31%, rgb(56 189 248 / 15%) 42%, transparent 58%),
+    linear-gradient(68deg, transparent 22%, rgb(129 140 248 / 19%) 42%, rgb(244 114 182 / 13%) 54%, transparent 72%),
+    linear-gradient(145deg, #080b13 0%, #101a27 30%, #1a1730 55%, #102429 78%, #08141b 100%);
+  background-size: 280% 280%;
   background-attachment: fixed;
+  animation: aurora-drift 28s ease-in-out infinite alternate;
   color: var(--color-ink);
   font-family: var(--font-sans);
 }
 
 .app-surface {
-  background-color: var(--color-paper);
-  background-image:
-    linear-gradient(132deg, rgb(211 224 242 / 58%), transparent 48%),
-    linear-gradient(310deg, rgb(203 232 220 / 54%), transparent 50%),
-    linear-gradient(28deg, rgb(248 220 211 / 34%), transparent 58%);
+  background: transparent;
+}
+
+.glass-panel {
+  background: rgb(17 24 39 / 68%);
+  border: 1px solid rgb(255 255 255 / 12%);
+  box-shadow: 0 18px 48px rgb(0 0 0 / 24%), inset 0 1px 0 rgb(255 255 255 / 6%);
+  backdrop-filter: blur(22px) saturate(145%);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+}
+
+@keyframes aurora-drift {
+  0% {
+    background-position: 0% 30%, 100% 70%, 50% 50%;
+  }
+  100% {
+    background-position: 100% 70%, 0% 30%, 50% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+  }
 }
 
 ::selection {
-  color: var(--color-ink);
-  background: #d7e6ed;
+  color: var(--color-aurora-deep);
+  background: var(--color-aurora-teal);
 }
 
 button,

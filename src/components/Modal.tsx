@@ -24,7 +24,7 @@ export function Modal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
-        className="relative z-10 mb-0 w-full max-w-[430px] rounded-t-3xl bg-card p-5 pb-8 shadow-xl sm:mb-8 sm:rounded-3xl"
+        className="glass-panel relative z-10 mb-0 w-full max-w-[430px] rounded-t-3xl p-5 pb-8 shadow-xl sm:mb-8 sm:rounded-3xl"
       >
         <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-line sm:hidden" />
         <div className="mb-4 flex items-start justify-between gap-3">
