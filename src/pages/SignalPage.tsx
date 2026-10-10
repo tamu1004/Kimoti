@@ -113,7 +113,7 @@ export function SignalPage() {
               aria-pressed={active}
               className={`flex min-h-14 items-center gap-3 rounded-2xl border px-4 text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage ${
                 active
-                  ? 'border-sage bg-[#e2efe8] text-sage-deep shadow-sm'
+                  ? 'border-sage bg-lilac text-sage-deep shadow-sm'
                   : 'border-line bg-card text-ink hover:border-sage/50'
               }`}
             >
@@ -164,7 +164,7 @@ export function SignalPage() {
           </label>
 
           {preset.tone === 'positive' ? (
-            <p className="rounded-xl bg-[#edf5e9] px-4 py-3 text-sm leading-relaxed text-sage-deep">
+            <p className="rounded-xl bg-sunlight px-4 py-3 text-sm leading-relaxed text-sage-deep">
               うれしい気持ちは、話す時間を決めずにそのまま伝えられます。
             </p>
           ) : (
@@ -177,7 +177,7 @@ export function SignalPage() {
                 requireDeadline={preset.revisitRequired}
               />
 
-              <p className="rounded-xl border-l-2 border-sage bg-[#eaf3ee] px-4 py-3 text-sm leading-relaxed text-sage-deep">
+              <p className="rounded-xl border-l-2 border-sage bg-moon px-4 py-3 text-sm leading-relaxed text-sage-deep">
                 {formatRevisitMessage(revisitAt)}
               </p>
             </>

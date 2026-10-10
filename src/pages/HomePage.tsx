@@ -182,13 +182,13 @@ export function HomePage() {
       </section>
 
       {mismatchCopy ? (
-        <p className="mt-4 rounded-2xl border border-peach/30 bg-[#fbefeb] px-4 py-3 text-sm leading-relaxed text-ink">
+        <p className="mt-4 rounded-2xl border border-peach/30 bg-blush px-4 py-3 text-sm leading-relaxed text-ink">
           {mismatchCopy}
         </p>
       ) : null}
 
       {received ? (
-        <p className="mt-3 rounded-xl bg-[#e5f0e9] px-3 py-2 text-sm text-sage-deep" role="status">
+        <p className="mt-3 rounded-xl bg-mint px-3 py-2 text-sm text-sage-deep" role="status">
           {partnerProfile.data?.nickname ?? 'パートナー'}さんに「
           {REACTION_LABELS[received.kind]}」を受け取りました
         </p>
@@ -228,7 +228,7 @@ export function HomePage() {
       <div className="mt-auto pt-6">
         <Link
           to="/signal"
-          className="flex min-h-14 w-full items-center justify-center rounded-2xl bg-sage-deep px-5 text-base font-medium text-white shadow-[0_8px_18px_rgba(40,88,78,0.18)] transition-colors hover:bg-sage focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
+          className="flex min-h-14 w-full items-center justify-center rounded-2xl bg-sage-deep px-5 text-base font-medium text-white shadow-[0_8px_20px_rgba(64,91,115,0.2)] transition-colors hover:bg-sage focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
         >
           {mySignal.data ? '自分の合図を更新する' : '自分の気持ちを伝える'}
         </Link>

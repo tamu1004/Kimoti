@@ -35,13 +35,13 @@ export function WelcomePage() {
         </p>
 
         <div className="mt-8 flex items-center justify-between px-1" aria-label="気持ちを伝え合い、話すタイミングを合わせるイメージ">
-          <span className="flex size-14 items-center justify-center rounded-full bg-[#e5f0e8] text-3xl" aria-hidden="true">
+          <span className="flex size-14 items-center justify-center rounded-full bg-mint text-3xl" aria-hidden="true">
             🌿
           </span>
           <span className="mx-3 h-px flex-1 border-t border-dashed border-sage/50" aria-hidden="true" />
           <span className="max-w-24 text-center text-xs leading-relaxed text-muted">話せる頃を<br />すり合わせる</span>
           <span className="mx-3 h-px flex-1 border-t border-dashed border-peach/60" aria-hidden="true" />
-          <span className="flex size-14 items-center justify-center rounded-full bg-[#fbefeb] text-3xl" aria-hidden="true">
+          <span className="flex size-14 items-center justify-center rounded-full bg-blush text-3xl" aria-hidden="true">
             💬
           </span>
         </div>

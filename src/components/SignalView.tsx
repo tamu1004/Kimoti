@@ -67,10 +67,10 @@ export function SignalView({
   const large = size === 'large'
   const toneColor =
     preset.tone === 'positive'
-      ? 'bg-[#edf5e9]'
+      ? 'bg-sunlight'
       : preset.tone === 'negative'
-        ? 'bg-[#fbefeb]'
-        : 'bg-[#eaf3f2]'
+        ? 'bg-blush'
+        : 'bg-moon'
 
   return (
     <div
