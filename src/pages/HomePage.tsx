@@ -141,18 +141,8 @@ export function HomePage() {
     Boolean(partnerSignal.data) && !partnerMember?.sharing_paused
 
   return (
-    <div className="flex min-h-[calc(100dvh-5rem)] flex-col px-5 pb-6 pt-5">
-      <header className="flex items-center justify-between">
-        <div>
-          <p className="bg-gradient-to-r from-aurora-teal via-aurora-indigo to-aurora-rose bg-clip-text text-xs font-bold tracking-[0.16em] text-transparent">KIMOTI</p>
-          <p className="mt-0.5 text-xs text-muted">ふたりの会話の合図</p>
-        </div>
-        <span className="rounded-full border border-line bg-card px-3 py-1 text-xs text-muted">
-          ふたりだけ
-        </span>
-      </header>
-
-      <section className="mb-6 mt-7">
+    <div className="flex min-h-[calc(100dvh-4rem)] flex-col px-5 pb-6 pt-5">
+      <section className="mb-6 mt-4">
         <p className="text-xs font-medium text-aurora-teal">話すタイミングを、一緒に。</p>
         <h1 className="mt-2 text-[1.65rem] font-medium leading-snug">
           気持ちを知って、<br />
