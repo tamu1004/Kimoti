@@ -99,7 +99,7 @@ export function SignalPage() {
       <p className="mt-5 text-xs font-medium text-sage-deep">ふたりのタイミングを合わせる</p>
       <h1 className="mt-2 text-2xl font-medium">いまの気持ちを伝える</h1>
       <p className="mt-3 text-sm leading-relaxed text-muted">
-        話したくない気持ちも、あとで話したい気持ちも大切な合図です。いまの気持ちと、また話せそうな頃を伝えましょう。
+        話したくない気持ちも、聞いてほしい気持ちも大切な合図です。いまの気持ちを選んで伝えましょう。
       </p>
 
       <div className="mt-5 grid grid-cols-1 gap-2">
@@ -163,17 +163,25 @@ export function SignalPage() {
             />
           </label>
 
-          <RevisitPicker
-            selected={revisitOption}
-            onSelect={setRevisitOption}
-            customLocal={customLocal}
-            onCustomLocal={setCustomLocal}
-            requireDeadline={preset.revisitRequired}
-          />
+          {preset.tone === 'positive' ? (
+            <p className="rounded-xl bg-[#edf5e9] px-4 py-3 text-sm leading-relaxed text-sage-deep">
+              うれしい気持ちは、話す時間を決めずにそのまま伝えられます。
+            </p>
+          ) : (
+            <>
+              <RevisitPicker
+                selected={revisitOption}
+                onSelect={setRevisitOption}
+                customLocal={customLocal}
+                onCustomLocal={setCustomLocal}
+                requireDeadline={preset.revisitRequired}
+              />
 
-          <p className="rounded-xl border-l-2 border-sage bg-[#eaf3ee] px-4 py-3 text-sm leading-relaxed text-sage-deep">
-            {formatRevisitMessage(revisitAt)}
-          </p>
+              <p className="rounded-xl border-l-2 border-sage bg-[#eaf3ee] px-4 py-3 text-sm leading-relaxed text-sage-deep">
+                {formatRevisitMessage(revisitAt)}
+              </p>
+            </>
+          )}
 
           {shouldShowExtendTalkNudge(mySignal.data?.extend_count ?? 0) &&
           mySignal.data?.preset === presetId ? (

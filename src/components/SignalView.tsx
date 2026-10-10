@@ -89,9 +89,15 @@ export function SignalView({
           <p className={`mt-1 font-medium leading-snug ${large ? 'text-xl' : 'text-base'}`}>
             {preset.label}
           </p>
-          <p className="mt-3 text-sm leading-relaxed text-ink">
-            {formatRevisitMessage(signal.revisit_at)}
-          </p>
+          {signal.revisit_at ? (
+            <p className="mt-3 text-sm leading-relaxed text-ink">
+              {formatRevisitMessage(signal.revisit_at)}
+            </p>
+          ) : signal.preset === 'good' || signal.preset === 'happy_talk' ? null : (
+            <p className="mt-3 text-sm leading-relaxed text-ink">
+              また話し合う時間は決めていません
+            </p>
+          )}
           {status === 'overdue' ? (
             <p className="mt-2 text-sm font-medium text-peach">目安の時間を過ぎています。今の気持ちを更新できます。</p>
           ) : null}

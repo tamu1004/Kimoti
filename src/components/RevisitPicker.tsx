@@ -28,7 +28,12 @@ export function RevisitPicker({
 }) {
   return (
     <div className="space-y-3">
-      <p className="text-sm text-muted">戻る目安</p>
+      <div>
+        <p className="text-sm font-medium text-ink">もう一度話し合う目安</p>
+        <p className="mt-1 text-xs leading-relaxed text-muted">
+          話せそうな時間を決めておくための目安です。約束ではなく、あとで変更できます。
+        </p>
+      </div>
       <div className="grid grid-cols-2 gap-2">
         {OPTIONS.map((id) => {
           if (requireDeadline && id === 'undecided') return null

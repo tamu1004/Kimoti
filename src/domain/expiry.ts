@@ -88,8 +88,8 @@ export function getSignalStatus(
 }
 
 export function formatRevisitMessage(revisitAt: Date | null): string {
-  if (!revisitAt) return '落ち着いたら自分から様子を伝えるね'
-  return `${format(revisitAt, 'H:mm')}ごろにまた様子を伝えるね`
+  if (!revisitAt) return 'また話し合う時間は決めていません'
+  return `${format(revisitAt, 'H:mm')}ごろに、もう一度話そう`
 }
 
 export function formatUpdatedAgo(updatedAt: Date, now: Date): string {
@@ -131,11 +131,11 @@ export function freshnessOpacity(status: SignalStatus): number {
 }
 
 export const REVISIT_OPTION_LABELS: Record<RevisitOptionId, string> = {
-  m30: '30分',
-  h1: '1時間',
-  h2: '2時間',
+  m30: '30分後',
+  h1: '1時間後',
+  h2: '2時間後',
   today: '今日中',
-  undecided: '未定（落ち着いたら自分から）',
+  undecided: 'まだ決めない',
   custom: '時刻を指定',
 }
 

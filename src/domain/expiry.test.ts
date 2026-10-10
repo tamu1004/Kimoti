@@ -147,10 +147,10 @@ describe('getSignalStatus', () => {
 describe('copy helpers', () => {
   it('formats a revisit as a gentle estimate', () => {
     expect(formatRevisitMessage(new Date('2026-10-03T20:30:00'))).toBe(
-      '20:30ごろにまた様子を伝えるね',
+      '20:30ごろに、もう一度話そう',
     )
     expect(formatRevisitMessage(null)).toBe(
-      '落ち着いたら自分から様子を伝えるね',
+      'また話し合う時間は決めていません',
     )
   })
 

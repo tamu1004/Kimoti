@@ -90,7 +90,7 @@ export function HomePage() {
     const name = cooldownIsPartner
       ? (partnerProfile.data?.nickname || 'パートナー')
       : (profile.data?.nickname || 'あなた')
-    return `お互いのペースが違うようです。${name}さんの『戻る目安』まで少し待って、そのあと話せそうか伝えましょう`
+    return `お互いのペースが違うようです。${name}さんが決めた「もう一度話し合う目安」まで待って、そのあと話せそうか伝えましょう`
   }, [
     mySignal.data,
     partnerSignal.data,
